@@ -4,9 +4,9 @@
 var connectionString = require('../utils.js').connectionString;
 var pg = require('../utils.js').pg;
 
-console.log(connectionString);
 var getCategories = function (req, res, callback) {
     var query = "SELECT * FROM categories";
+
     pg.connect(connectionString, function (err, client, done) {
         if(!err){
             client.query(query, function (err, result) {

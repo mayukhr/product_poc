@@ -2,21 +2,21 @@
  * Created by Mayukhr on 13-08-2015.
  */
 
-var utils = require('../utils.js');
-//var mysql = require('mysql');
+var connectionString = require('../utils.js').connectionString;
+var pg = require('../utils.js').pg;
 
 var getProducts = function (req, res, callback) {
     var query = "SELECT * FROM products";
-    utils.getConnection(function(err, connection){
+
+    pg.connect(connectionString, function (err, client, done) {
         if(!err){
-            connection.query(query , function(err, rows) {
+            client.query(query, function (err, result) {
                 if(!err) {
-                    callback(null, rows);
+                    callback(null, result.rows);
                 }else{
                     callback(err, null);
                 }
-                connection.release();
-
+                done();
             });
         }else{
             callback(err, null);
@@ -33,16 +33,15 @@ var getProductsByCategory = function (req, res, callback) {
     var table = [req.params.category_id];
     query = mysql.format(query,table);
 
-    utils.getConnection(function(err, connection){
+    pg.connect(connectionString, function (err, client, done) {
         if(!err){
-            connection.query(query , function(err, rows) {
+            client.query(query, table, function(err, result) {
                 if(!err) {
-                    callback(null, rows);
+                    callback(null, result.rows);
                 }else{
                     callback(err, null);
                 }
-                connection.release();
-
+                done();
             });
         }else{
             callback(err, null);

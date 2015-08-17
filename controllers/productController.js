@@ -24,7 +24,7 @@ var getAllProductsByCategory = function (req, res) {
         }
     });
 }
-
+/*
 var addProduct = function (req, res) {
     utils.getConnection(function(err, connection) {
         if(!err) {
@@ -47,7 +47,7 @@ var addProduct = function (req, res) {
         }
     });
 }
-
+*/
 exports.getAllProducts = getAllProducts;
 exports.getAllProductsByCategory = getAllProductsByCategory;
-exports.addProduct = addProduct;
+//exports.addProduct = addProduct;
