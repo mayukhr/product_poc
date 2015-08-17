@@ -14,7 +14,8 @@
     <ul>
         <li><a href="#" id="allCategories"> allCategories </a></li><br/>
         <li><a href="#" id="allProducts"> allProducts </a></li><br/>
-        <li><a href="#" id="getProductsByCategoryId"> getProductsByCategoryId (Ex: category_id=1) </a></li><br/>
+        <li><a href="#" id="getProductsByCategoryId1"> getProductsByCategoryId 1 </a></li><br/>
+        <li><a href="#" id="getProductsByCategoryId2"> getProductsByCategoryId 2 </a></li><br/>
         <li> Add Product:
             <input placeholder="1(sports) OR 2(electronics)" id="category_id" value="1" type="text"/>
             <input placeholder="Name" id="product_name" type="text"/>
@@ -46,9 +47,17 @@
         });
     });
 
-    $( "#getProductsByCategoryId" ).click(function() {
-        $('#type').text('getProductsByCategoryId');
+    $( "#getProductsByCategoryId1" ).click(function() {
+        $('#type').text('getProductsByCategoryId 1');
         $.get( "/getProducts/category/1", function( data ) {
+            var data = JSON.parse(JSON.stringify(data));
+            $('#json-renderer').jsonViewer(data);
+        });
+    });
+
+    $( "#getProductsByCategoryId2" ).click(function() {
+        $('#type').text('getProductsByCategoryId 2');
+        $.get( "/getProducts/category/2", function( data ) {
             var data = JSON.parse(JSON.stringify(data));
             $('#json-renderer').jsonViewer(data);
         });
