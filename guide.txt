@@ -1,0 +1,19 @@
+Requirements::
+
+Create tables listed below
+1.product
+2.product_categories
+
+add 2 to 3 columns of your choice in each table.
+Note:- Products can have multiple categories.
+
+now, do the following Node.js tasks.
+
+Using Express framework and following proper MVC Pattern make 3 REST APIs
+
+1.API for getting Products by category id.
+2.API for getting all categories and products.
+3.API for adding new product.
+
+---------------------------------------------------------------------------------------------------------------------
+

@@ -1,0 +1,56 @@
+Requirements::
+
+Create tables listed below
+1.product
+2.product_categories
+
+add 2 to 3 columns of your choice in each table.
+Note:- Products can have multiple categories.
+
+now, do the following Node.js tasks.
+
+Using Express framework and following proper MVC Pattern make 3 REST APIs
+
+1.API for getting Products by category id.
+2.API for getting all categories and products.
+3.API for adding new product.
+
+---------------------------------------------------------------------------------------------------------------------
+CREATE TABLE products(
+   product_id int not null auto_increment primary key,
+   product_name varchar(255) not null,
+   product_price decimal,
+   created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE categories(
+   category_id int not null auto_increment primary key,
+   category_name varchar(255) not null,
+   created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE product_categories(
+   product_category_id int not null auto_increment primary key,
+   category_id int not null,
+   product_id int not null,
+   created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+   FOREIGN KEY (product_id) REFERENCES products(product_id) ON UPDATE CASCADE,  
+   FOREIGN KEY (category_id) REFERENCES categories(category_id) ON UPDATE CASCADE
+);
+ 
+INSERT INTO `product_poc`.`products` (`product_name`, `product_price`) VALUES ('Stiga TT bat ', '565');
+INSERT INTO `product_poc`.`products` (`product_name`, `product_price`) VALUES ('Butterfly TT bat ', '1200');
+INSERT INTO `product_poc`.`products` (`product_name`, `product_price`) VALUES ('Samsung Mobile', '10000');
+INSERT INTO `product_poc`.`products` (`product_name`, `product_price`) VALUES ('Micromax Mobile', '5000');
+INSERT INTO `product_poc`.`products` (`product_name`, `product_price`) VALUES ('Stopwatch', '2000');
+
+
+INSERT INTO `product_poc`.`categories` (`category_name`) VALUES ('sports');
+INSERT INTO `product_poc`.`categories` (`category_name`) VALUES ('electronics');
+
+INSERT INTO `product_poc`.`product_categories` (category_id, product_id) VALUES (1,1);
+INSERT INTO `product_poc`.`product_categories` (category_id, product_id) VALUES (1,2);
+INSERT INTO `product_poc`.`product_categories` (category_id, product_id) VALUES (2,3);
+INSERT INTO `product_poc`.`product_categories` (category_id, product_id) VALUES (2,4);
+INSERT INTO `product_poc`.`product_categories` (category_id, product_id) VALUES (1,5);
+INSERT INTO `product_poc`.`product_categories` (category_id, product_id) VALUES (2,5);

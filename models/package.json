@@ -1,0 +1,15 @@
+{
+  "name": "models",
+  "description": "models",
+  "version": "0.1.0",
+  "homepage": "",
+  "author": {
+    "name": "Mayukh Roy",
+    "email": "roy.mayukh@yahoo.in"
+  },
+  "main": "model.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "keywords": []
+}
