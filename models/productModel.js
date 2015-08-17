@@ -51,18 +51,19 @@ var getProductsByCategory = function (req, res, callback) {
 var addProduct = function (req, res, callback) {
     pg.connect(connectionString, function (err, client, done) {
         if(!err) {
-            client.query('INSERT INTO products(product_name, product_price) VALUES ($1, $2) RETURNING product_id', [req.body.product_name, req.body.product_price], function (err, result) {
+            client.query('INSERT INTO products(product_name, product_price) VALUES ($1, $2) RETURNING product_id',
+                        [req.body.product_name, req.body.product_price], function (err, result) {
                 if (err) {
                     res.json({"Error": true, "Message": err});
-                } else {res.json({"Error": false, "Message": result});
+                } else {//res.json({"Error": false, "Message": result});
                     //create product_categories entry
-                    /*client.query('INSERT INTO product_categories(category_id, product_id) VALUES ($1, $2)', [req.body.category_id, result.insertId], function (err, result) {
+                    client.query('INSERT INTO product_categories(category_id, product_id) VALUES ($1, $2)', [req.body.category_id, result.rows[0].product_id], function (err, result) {
                         if (err) {
                             res.json({"Error": true, "Message": err});
                         } else {
                             res.json({"Error": false, "Message": "Successfully created new row!"});
                         }
-                    });*/
+                    });
                 }
             });
         } else {
