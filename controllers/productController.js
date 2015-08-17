@@ -22,6 +22,16 @@ var getAllProductsByCategory = function (req, res) {
         }
     });
 }
+
+var addProduct = function (req, res) {
+    productModel.getProductsByCategory(req, res, function(err, result){
+        if(!err) {
+            res.json({"Error": false, "Message": "Success", "Products": result});
+        }else{
+            res.json({"Error": true, "Message": err});
+        }
+    });
+}
 /*
 var addProduct = function (req, res) {
     utils.getConnection(function(err, connection) {
@@ -48,4 +58,4 @@ var addProduct = function (req, res) {
 */
 exports.getAllProducts = getAllProducts;
 exports.getAllProductsByCategory = getAllProductsByCategory;
-//exports.addProduct = addProduct;
+exports.addProduct = addProduct;

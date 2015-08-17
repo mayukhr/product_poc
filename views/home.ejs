@@ -15,6 +15,12 @@
         <li><a href="#" id="allCategories"> allCategories </a></li><br/>
         <li><a href="#" id="allProducts"> allProducts </a></li><br/>
         <li><a href="#" id="getProductsByCategoryId"> getProductsByCategoryId (Ex: category_id=1) </a></li><br/>
+        <li> Add Product:
+            <input placeholder="1(sports) OR 2(electronics)" id="category_id" value="1" type="text"/>
+            <input placeholder="Name" id="product_name" type="text"/>
+            <input placeholder="Price(INR)" id="product_price" type="text"/>
+            <input id="add_btn" value="Add Product" type="button"/>
+        </li>
     </ul>
 </div>
 
@@ -48,6 +54,18 @@
         });
     });
 
+    $( "#add_btn" ).click(function() {
+        $('#type').text('Add Product');
+        $.ajax({
+            url: '/products/add',
+            type: 'PUT',
+            data:{ product_name: $('#product_name').val(), product_price: $('#product_price').val(), category_id: $('#category_id').val()},
+            success: function(data) {
+                var data = JSON.parse(JSON.stringify(data));
+                $('#json-renderer').jsonViewer(data);
+            }
+        });
+    });
 </script>
 </body>
 </html>

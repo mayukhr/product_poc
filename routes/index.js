@@ -21,9 +21,9 @@ router.get("/allProducts", function(req,res){
 router.get("/getProducts/category/:category_id", function(req,res){
     productController.getAllProductsByCategory(req, res);
 });
-/*
+
 router.put("/products/add", function(req,res){
     productController.addProduct(req, res);
 });
-*/
+
 module.exports = router;
