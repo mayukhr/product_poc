@@ -1,7 +1,6 @@
 /**
  * Created by Mayukhr on 13-08-2015.
  */
-var utils = require('../utils.js');
 var categoryModel = require('../models').categoryModel;
 
 var getAllCategories = function (req, res) {

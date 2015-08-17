@@ -3,7 +3,7 @@
  */
 
 var utils = require('../utils.js');
-var mysql = require('mysql');
+//var mysql = require('mysql');
 
 var getProducts = function (req, res, callback) {
     var query = "SELECT * FROM products";
