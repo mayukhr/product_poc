@@ -11,7 +11,7 @@ var getCategories = function (req, res, callback) {
         if(!err){
             client.query(query, function (err, result) {
                 if(!err) {
-                    callback(null, result);
+                    callback(null, result.rows);
                 }else{
                     callback(err, null);
                 }
@@ -23,4 +23,3 @@ var getCategories = function (req, res, callback) {
     });
 }
 exports.getCategories = getCategories;
-//psql -h [ec2-54-197-230-210.compute-1.amazonaws.com] -U [nmcmkrgpvcspgv] [d3nkr9l8drvvd1]

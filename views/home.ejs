@@ -19,11 +19,12 @@
 
 <div><br/><br/><br/><br/></div>
 
-<div style="padding-left: 2rem; border: 1px solid #aaa; background-color: darkgrey;">
-    <h3>Data:</h3>
+<div style="padding-left: 2rem; border: 1px solid #aaa; background-color: aliceblue;">
+    <h3>Data for <span id="type"> </span></h3>
     <pre id="json-renderer"></pre></div>
 <script>
     $( "#allCategories" ).click(function() {
+        $('#type').text('allCategories');
         $.get( "/allCategories", function( data ) {
             var data = JSON.parse(JSON.stringify(data));
             $('#json-renderer').jsonViewer(data);
@@ -31,6 +32,7 @@
     });
 
     $( "#allProducts" ).click(function() {
+        $('#type').text('allProducts');
         $.get( "/allProducts", function( data ) {
             var data = JSON.parse(JSON.stringify(data));
             $('#json-renderer').jsonViewer(data);
@@ -38,6 +40,7 @@
     });
 
     $( "#getProductsByCategoryId" ).click(function() {
+        $('#type').text('getProductsByCategoryId');
         $.get( "/getProducts/category/1", function( data ) {
             var data = JSON.parse(JSON.stringify(data));
             $('#json-renderer').jsonViewer(data);
