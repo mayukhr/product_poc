@@ -22,13 +22,13 @@ var getProducts = function (req, res, callback) {
             callback(err, null);
         }
     });
-}
+};
 
 var getProductsByCategory = function (req, res, callback) {
     var query = "SELECT p.product_name, c.category_name,p.product_price FROM product_categories pc " +
         "INNER JOIN products p ON p.product_id=pc.product_id " +
         "INNER JOIN categories c ON c.category_id=pc.category_id  " +
-        "WHERE c.category_id = ?;";
+        "WHERE c.category_id = $1;";
 
     var table = [req.params.category_id];
 
@@ -46,6 +46,6 @@ var getProductsByCategory = function (req, res, callback) {
             callback(err, null);
         }
     });
-}
+};
 exports.getProductsByCategory = getProductsByCategory;
 exports.getProducts = getProducts;

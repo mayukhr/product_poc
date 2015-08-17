@@ -1,8 +1,6 @@
 /**
  * Created by Mayukhr on 13-08-2015.
  */
-var utils = require('../utils.js');
-//var mysql = require('mysql');
 var productModel = require('../models').productModel;
 
 var getAllProducts = function (req, res) {
