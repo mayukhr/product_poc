@@ -54,15 +54,15 @@ var addProduct = function (req, res, callback) {
             client.query('INSERT INTO products SET ?', {product_name: req.body.product_name, product_price: req.body.product_price}, function (err, result) {
                 if (err) {
                     res.json({"Error": true, "Message": err});
-                } else {console.log('*****',result,'*****');
+                } else {res.json({"Error": false, "Message": result});
                     //create product_categories entry
-                    client.query('INSERT INTO product_categories SET ?', {category_id: req.body.category_id, product_id: result.insertId}, function (err, result) {
+                    /*client.query('INSERT INTO product_categories SET ?', {category_id: req.body.category_id, product_id: result.insertId}, function (err, result) {
                         if (err) {
                             res.json({"Error": true, "Message": err});
                         } else {
                             res.json({"Error": false, "Message": "Successfully created new row!"});
                         }
-                    });
+                    });*/
                 }
             });
         } else {

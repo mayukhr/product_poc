@@ -24,7 +24,7 @@ var getAllProductsByCategory = function (req, res) {
 }
 
 var addProduct = function (req, res) {
-    productModel.getProductsByCategory(req, res, function(err, result){
+    productModel.addProduct(req, res, function(err, result){
         if(!err) {
             res.json({"Error": false, "Message": "Success", "Products": result});
         }else{
