@@ -31,7 +31,6 @@ var getProductsByCategory = function (req, res, callback) {
         "WHERE c.category_id = ?;";
 
     var table = [req.params.category_id];
-    query = mysql.format(query,table);
 
     pg.connect(connectionString, function (err, client, done) {
         if(!err){
